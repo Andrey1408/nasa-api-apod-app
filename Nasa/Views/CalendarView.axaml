@@ -1,0 +1,29 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Nasa.ViewModels"
+
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Nasa.Views.CalendarView"
+             x:DataType="vm:CalendarViewModel">
+    <DockPanel Margin="5">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="200">
+            <Button x:CompileBindings="False"
+                    Command="{Binding $parent[Window].DataContext.CalendarViewCommand}">
+                <PathIcon Height="50" Width="40" Data="{StaticResource calendar_month_regular}" />
+            </Button>
+            <Button x:CompileBindings="False"
+                    Command="{Binding $parent[Window].DataContext.MainViewCommand}">
+                <PathIcon Height="50" Width="40" Data="{StaticResource home_regular}" />
+            </Button>
+            <Button x:CompileBindings="False"
+                    Command="{Binding $parent[Window].DataContext.FavoritesViewCommand}">
+                <PathIcon Height="50" Width="40" Data="{StaticResource star_regular}" />
+            </Button>
+        </StackPanel>
+        <Viewbox Stretch="Fill" Width="350" Height="350" HorizontalAlignment="Center">
+            <Calendar SelectedDate="{Binding SelectedDate}" x:Name="calendar" SelectionMode="SingleDate" />
+        </Viewbox>
+    </DockPanel>
+</UserControl>

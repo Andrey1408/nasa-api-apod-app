@@ -1,0 +1,40 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Nasa.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Nasa.Views.FavoritesView"
+             x:DataType="vm:FavoritesViewModel">
+    <DockPanel Margin="5">
+        <ScrollViewer DockPanel.Dock="Top" Margin="50">
+            <ItemsControl ItemsSource="{Binding Pictures}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="White" CornerRadius="6" BorderThickness="2">
+                            <StackPanel Spacing="5" Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding date}" />
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding title}" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </ScrollViewer>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="200">
+            <Button x:CompileBindings="False"
+                    Command="{Binding $parent[Window].DataContext.CalendarViewCommand}">
+                <PathIcon Height="50" Width="40" Data="{StaticResource calendar_month_regular}" />
+            </Button>
+            <Button x:CompileBindings="False"
+                    Command="{Binding $parent[Window].DataContext.MainViewCommand}">
+                <PathIcon Height="50" Width="40" Data="{StaticResource home_regular}" />
+            </Button>
+            <Button x:CompileBindings="False"
+                    Command="{Binding $parent[Window].DataContext.FavoritesViewCommand}">
+                <PathIcon Height="50" Width="40" Data="{StaticResource star_regular}" />
+            </Button>
+        </StackPanel>
+    </DockPanel>
+</UserControl>
